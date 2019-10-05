@@ -45,8 +45,8 @@ iframe {
     border-radius: 5px;
 }
 
-.Header, .HoverCard, .Footer {
-	display: none;
+div[class="Header"], div[class="HoverCard"], div[class="Footer"] {
+	display: none !important;
 }
 
 .Feedback {
