@@ -47,6 +47,10 @@ footer {
 	text-align: center;
 }
 
+#eapps-instagram-feed-1 {
+	margin: 5vh auto 0 auto;
+}
+
 .socials {
 	min-height: 2vh;
 	max-height: 3.2vh;
