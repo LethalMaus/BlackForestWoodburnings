@@ -6,17 +6,23 @@ xhr.onload = function() {
     console.log(`Error ${xhr.status}: ${xhr.statusText}`);
   } else { 
     console.log(`Done, got ${xhr.response}`);
-	var data = JSON.parse(xhr.response);
+	var data = JSON.parse(JSON.stringify(xhr.response));
+	console.log(data);
 	/*
 	var likes = "<div class='instagram-likes'>" + data['shortcode_media']['edge_media_preview_like']['count'] + "</div>";
 	var comments = "<div class='instagram-comments'>" + data['shortcode_media']['edge_media_preview_comment']['count'] + "</div>";
 	var caption = "<div class='instagram-caption'>" + data['shortcode_media']['edge_media_to_caption.edges'][0]['node']['text'] + "</div>";
 	var image = "<img class='instagram-image' src='" + data['shortcode_media']['display_url'] + "'>";
-	*/
+	
 	var likes = "<div class='instagram-likes'>" + data.shortcode_media.edge_media_preview_like.count + "</div>";
 	var comments = "<div class='instagram-comments'>" + data.shortcode_media.edge_media_preview_comment.count + "</div>";
 	var caption = "<div class='instagram-caption'>" + data.shortcode_media.edge_media_to_caption.edges[0].node.text + "</div>";
 	var image = "<img class='instagram-image' src='" + data.shortcode_media.display_url + "'>";
+	*/
+	var likes = "<div class='instagram-likes'>" + data[shortcode_media][edge_media_preview_like][count] + "</div>";
+	var comments = "<div class='instagram-comments'>" + data[shortcode_media][edge_media_preview_comment][count] + "</div>";
+	var caption = "<div class='instagram-caption'>" + data[shortcode_media][edge_media_to_caption.edges][0][node][text] + "</div>";
+	var image = "<img class='instagram-image' src='" + data[shortcode_media][display_url] + "'>";
 	var instagramPost = "<div class='instagram-post'>" + likes + comments + caption + image + "</div>";
 	document.getElementById("instagram-gallery").innerHTML = instagramPost;
   }
