@@ -40,30 +40,50 @@ h1 {
 	margin: 5px auto 5px auto;
 }
 
-iframe {
-	width: 30vw;
-    border-radius: 5px;
+.instagram-post {
+	position: relative;
+    width: 55vh;
+    height: 55vh;
+    background: red;
+    color: white;
+    font-size: 2vh;
 }
 
-.Header, .HoverCard, .Footer {
-	display: none;
-}
-
-.Feedback {
+.instagram-likes {
 	position: absolute;
-	bottom: 0;
-    width: 100%;
+    bottom: 0;
+    left: 0;
+    margin: 2vh;
 }
 
-.Caption  {
+.instagram-comments {
 	position: absolute;
-    top: 20%;
+    bottom: 0;
+    right: 0;
+    margin: 2vh;
+}
+
+.instagram-caption {
+	width: 45vh;
     text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.SocialProof {
+.instagram-image {
 	position: absolute;
-    top: 0;
+    width: 100%;
+    height: 100%;
+	opacity: 1.0;
+}
+
+.instagram-image:hover {
+	opacity: 0.15;
+    transition: opacity 1.5s ease-in-out;
+    -moz-transition: opacity 1.5s ease-in-out;
+    -webkit-transition: opacity 1.5s ease-in-out;
 }
 
 footer {
@@ -71,10 +91,6 @@ footer {
 	bottom: 0;
 	width: 100%;
 	text-align: center;
-}
-
-#eapps-instagram-feed-1 {
-	margin: 5vh auto 0 auto;
 }
 
 .socials {
@@ -85,8 +101,8 @@ footer {
 
 .socials:hover {
 	filter: gray;
-      -webkit-filter: grayscale(1);
-      -webkit-transform: scale(1.01);
+    -webkit-filter: grayscale(1);
+    -webkit-transform: scale(1.01);
 }
 
 .socials-column {
