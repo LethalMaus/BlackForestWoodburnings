@@ -6,33 +6,29 @@ function loadPosts() {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'posts.json');
 	xhr.send();
-	xhr.onload = function() {
+	xhr.onload = async function() {
 		if (xhr.status != 200) { 
 			console.log(`Error ${xhr.status}: ${xhr.statusText}`);
 		} else { 
 			var posts = JSON.parse(xhr.responseText);
+			var currentPostShown;
 			for (let i = 0; i < posts.length; i++) {
-				loadPostAfterTime(posts[i])
+				loadPost(postId);
+				if (currentPostShown) {
+					currentPost = document.getElementById(postId);
+					var timer = setInterval(function () {
+						if (currentPost.style.opacity <= 0.1) {
+							currentPost.outerHTML = "";
+							clearInterval(timer);
+						}
+						currentPost.style.opacity -= 0.1;
+					}, 100);
+				}
+				currentPostShown = postId;
+				await timer(3000);
 			};
 		}
 	}
-}
-
-var currentPostShown;
-async function loadPostAfterTime(postId) {
-	loadPost(postId);
-	if (currentPostShown) {
-		currentPost = document.getElementById(postId);
-		var timer = setInterval(function () {
-			if (currentPost.style.opacity <= 0.1) {
-				currentPost.outerHTML = "";
-				clearInterval(timer);
-			}
-			currentPost.style.opacity -= 0.1;
-		}, 100);
-	}
-	currentPostShown = postId;
-	await timer(3000);
 }
 
 function loadPost(postId) {
