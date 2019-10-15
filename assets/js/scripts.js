@@ -62,7 +62,7 @@ function loadPost(postId) {
 			var comments = "<div class='instagram-comments'><img class='instagram-symbols' src='images/comment.png' alt='Comments'> " + commentCount + "</div>";
 			var caption = "<div class='instagram-caption'>" + response.data.shortcode_media.edge_media_to_caption.edges[0].node.text + "</div>";
 			var image = "<img class='instagram-image' src='" + response.data.shortcode_media.display_url + "'>";
-			var instagramPost = "<div id='" + postId + "'class='instagram-post'>" + likes + comments + caption + image + "</div>";
+			var instagramPost = "<div id='" + postId + "' class='instagram-post'>" + likes + comments + caption + image + "</div>";
 			document.getElementById("instagram-gallery").innerHTML += instagramPost;
 		}
 	};
