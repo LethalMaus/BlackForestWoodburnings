@@ -24,7 +24,7 @@ async function loadPostAfterTime(postId) {
 	if (currentPostShown) {
 		currentPost = document.getElementById(postId);
 		var timer = setInterval(function () {
-			if (op <= 0.1) {
+			if (currentPost.style.opacity <= 0.1) {
 				currentPost.outerHTML = "";
 				clearInterval(timer);
 			}
