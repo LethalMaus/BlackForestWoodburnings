@@ -13,9 +13,9 @@ function loadPosts() {
 			var posts = JSON.parse(xhr.responseText);
 			var currentPostShown;
 			for (let i = 0; i < posts.length; i++) {
-				loadPost(postId);
+				loadPost(posts[i]);
 				if (currentPostShown) {
-					currentPost = document.getElementById(postId);
+					currentPost = document.getElementById(currentPostShown);
 					var timer = setInterval(function () {
 						if (currentPost.style.opacity <= 0.1) {
 							currentPost.outerHTML = "";
@@ -24,7 +24,7 @@ function loadPosts() {
 						currentPost.style.opacity -= 0.1;
 					}, 100);
 				}
-				currentPostShown = postId;
+				currentPostShown = posts[i];
 				await timer(3000);
 			};
 		}
