@@ -11,10 +11,9 @@ function loadPosts() {
 			console.log(`Error ${xhr.status}: ${xhr.statusText}`);
 		} else { 
 			var posts = JSON.parse(xhr.responseText);
-			
 			for (let i = 0; i < posts.length; i++) {
 				loadPostAfterTime(posts[i])
-			});
+			};
 		}
 	}
 }
