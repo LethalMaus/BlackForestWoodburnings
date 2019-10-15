@@ -2,7 +2,7 @@ function timer(ms) {
 	return new Promise(res => setTimeout(res, ms));
 }
 
-async function loadPosts() {
+function loadPosts() {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'posts.json');
 	xhr.send();
@@ -12,20 +12,22 @@ async function loadPosts() {
 		} else { 
 			var posts = JSON.parse(xhr.responseText);
 			var currentPostShown;
-			posts.forEach(function(postId) {
-				loadPost(postId);
-				if (currentPostShown) {
-					currentPost = document.getElementById(postId);
-					var timer = setInterval(function () {
-						if (op <= 0.1){
-							currentPost.outerHTML = "";
-							clearInterval(timer);
-						}
-						currentPost.style.opacity -= 0.1;
-					}, 100);
+			for (let i = 0; i < posts.length; i++) {
+				async function() {
+					loadPost(posts[i]);
+					if (currentPostShown) {
+						currentPost = document.getElementById(posts[i]);
+						var timer = setInterval(function () {
+							if (op <= 0.1){
+								currentPost.outerHTML = "";
+								clearInterval(timer);
+							}
+							currentPost.style.opacity -= 0.1;
+						}, 100);
+					}
+					currentPostShown = posts[i];
+					await timer(3000);
 				}
-				currentPostShown = postId;
-				await timer(3000);
 			});
 		}
 	}
