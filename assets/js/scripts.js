@@ -15,17 +15,11 @@ function loadPosts() {
 			for (let i = 0; i < posts.length; i++) {
 				loadPost(posts[i]);
 				if (currentPostShown) {
-					currentPost = document.getElementById(currentPostShown);
-					var timer = setInterval(function () {
-						if (currentPost.style.opacity <= 0.1) {
-							currentPost.outerHTML = "";
-							clearInterval(timer);
-						}
-						currentPost.style.opacity -= 0.1;
-					}, 100);
+					document.getElementById(currentPostShown).style.opacity = 0;
+					await timeout(1000);
 				}
 				currentPostShown = posts[i];
-				await timeout(3000);
+				await timeout(5000);
 			};
 		}
 	}
