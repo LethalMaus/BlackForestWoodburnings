@@ -1,6 +1,5 @@
-let xhr = new XMLHttpRequest();
-
 function loadPosts() {
+	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'posts.json');
 	xhr.send();
 	xhr.onload = function() {
@@ -14,6 +13,7 @@ function loadPosts() {
 }
 
 function loadPost(postId) {
+	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'https://www.instagram.com/graphql/query/?query_hash=865589822932d1b43dfe312121dd353a&variables=%7B%22shortcode%22%3A%22' + postId + '%22%7D');
 	xhr.send();
 	xhr.onload = function() {
