@@ -11,26 +11,29 @@ function loadPosts() {
 			console.log(`Error ${xhr.status}: ${xhr.statusText}`);
 		} else { 
 			var posts = JSON.parse(xhr.responseText);
-			var currentPostShown;
+			
 			for (let i = 0; i < posts.length; i++) {
-				async function() {
-					loadPost(posts[i]);
-					if (currentPostShown) {
-						currentPost = document.getElementById(posts[i]);
-						var timer = setInterval(function () {
-							if (op <= 0.1){
-								currentPost.outerHTML = "";
-								clearInterval(timer);
-							}
-							currentPost.style.opacity -= 0.1;
-						}, 100);
-					}
-					currentPostShown = posts[i];
-					await timer(3000);
-				}
+				loadPostAfterTime(posts[i])
 			});
 		}
 	}
+}
+
+var currentPostShown;
+async function loadPostAfterTime(postId) {
+	loadPost(postId);
+	if (currentPostShown) {
+		currentPost = document.getElementById(postId);
+		var timer = setInterval(function () {
+			if (op <= 0.1) {
+				currentPost.outerHTML = "";
+				clearInterval(timer);
+			}
+			currentPost.style.opacity -= 0.1;
+		}, 100);
+	}
+	currentPostShown = postId;
+	await timer(3000);
 }
 
 function loadPost(postId) {
