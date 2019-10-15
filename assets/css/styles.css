@@ -34,8 +34,8 @@ h1 {
 }
 
 #title-splitter {
-	height: 1px;
-	width: 60px;
+	height: 0.2vh;
+	width: 5vw;
 	background-color: black;
 	margin: 5px auto 5px auto;
 }
