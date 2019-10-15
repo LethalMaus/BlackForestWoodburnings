@@ -28,15 +28,15 @@ function loadPost(postId) {
 			} else {
 				likeCount = 0;
 			}
-			var likes = "<div class='instagram-likes'>" + likeCount + "</div>";
+			var likes = "<div class='instagram-likes'><img class='instagram-symbols' src='images/heart.png' alt='Likes'>" + likeCount + "</div>";
 			
 			var commentCount;
-			if (response.data.shortcode_media.edge_media_preview_comment && response.data.shortcode_media.edge_media_preview_comment.count) {
-				commentCount = response.data.shortcode_media.edge_media_preview_comment.count;
+			if (response.data.shortcode_media.edge_media_to_comment && response.data.shortcode_media.edge_media_to_comment.count) {
+				commentCount = response.data.shortcode_media.edge_media_to_comment.count;
 			} else {
 				commentCount = 0;
 			}
-			var comments = "<div class='instagram-comments'>" + commentCount + "</div>";
+			var comments = "<div class='instagram-comments'><img class='instagram-symbols' src='images/comment.png' alt='Comments'>" + commentCount + "</div>";
 			var caption = "<div class='instagram-caption'>" + response.data.shortcode_media.edge_media_to_caption.edges[0].node.text + "</div>";
 			var image = "<img class='instagram-image' src='" + response.data.shortcode_media.display_url + "'>";
 			var instagramPost = "<div class='instagram-post'>" + likes + comments + caption + image + "</div>";
