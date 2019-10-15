@@ -1,4 +1,4 @@
-function timer(ms) {
+function timeout(ms) {
 	return new Promise(res => setTimeout(res, ms));
 }
 
@@ -25,7 +25,7 @@ function loadPosts() {
 					}, 100);
 				}
 				currentPostShown = posts[i];
-				await timer(3000);
+				await timeout(3000);
 			};
 		}
 	}
