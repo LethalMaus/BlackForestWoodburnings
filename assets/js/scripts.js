@@ -1,14 +1,12 @@
-function setPlatformIndependentViewHeight() {
-	let vh = window.innerHeight * 0.01;
-	document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-setPlatformIndependentViewHeight();
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 var resizeTimer;
 window.addEventListener('resize', () => {
 	clearTimeout(resizeTimer);
 	resizeTimer = setTimeout(function() {
-		setPlatformIndependentViewHeight();
+		let vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	}, 250);
 });
 
