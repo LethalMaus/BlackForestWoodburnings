@@ -14,9 +14,11 @@ function loadPosts() {
 			var currentPostShown;
 			for (let i = 0; i < posts.length; i++) {
 				loadPost(posts[i]);
+				document.getElementById(posts[i]).style.opacity = 1;
+				await timeout(3000);
+				document.getElementById('image-' + posts[i]).style.opacity = 1;
 				if (currentPostShown) {
-					document.getElementById(currentPostShown).style.opacity = 0;
-					await timeout(1000);
+					document.getElementById(currentPostShown).outerHTML = "";
 				}
 				currentPostShown = posts[i];
 				await timeout(5000);
@@ -51,7 +53,7 @@ function loadPost(postId) {
 			}
 			var comments = "<div class='instagram-comments'><img class='instagram-symbols' src='images/comment.png' alt='Comments'> " + commentCount + "</div>";
 			var caption = "<div class='instagram-caption'>" + response.data.shortcode_media.edge_media_to_caption.edges[0].node.text + "</div>";
-			var image = "<img class='instagram-image' src='" + response.data.shortcode_media.display_url + "'>";
+			var image = "<img id='image-" + postId + "' class='instagram-image' src='" + response.data.shortcode_media.display_url + "'>";
 			var instagramPost = "<div id='" + postId + "' class='instagram-post'>" + likes + comments + caption + image + "</div>";
 			document.getElementById("instagram-gallery").innerHTML += instagramPost;
 		}
