@@ -22,20 +22,25 @@ body {
 header {
 	text-align: center;
 	margin-bottom: 3vh;
+	margin-bottom: calc(var(--vh, 1vh) * 3);
 }
 
 #logo {
 	width: 12vh;
+	width: calc(var(--vh, 1vh) * 12);
 	margin: 2vh;
+	margin: calc(var(--vh, 1vh) * 2);
 }
 
 h1 {
 	font-size: 4vh;
+	font-size: calc(var(--vh, 1vh) * 4);
 	margin: 0px;
 }
 
 #title-splitter {
 	height: 0.2vh;
+	height: calc(var(--vh, 1vh) * 0.2);
 	width: 5vw;
 	background-color: black;
 	margin: 5px auto 5px auto;
@@ -44,6 +49,7 @@ h1 {
 .instagram-post, .instagram-post-invisible {
 	position: absolute;
     width: 55vh;
+	width: calc(var(--vh, 1vh) * 55);
 	max-width: 90vw;
     height: 55vh;
 	height: calc(var(--vh, 1vh) * 55);
@@ -51,6 +57,7 @@ h1 {
     background: red;
     color: white;
     font-size: 2vh;
+	font-size: calc(var(--vh, 1vh) * 2);
 	left: 50%;
     transform: translate(-50%);
 	transition: opacity 1s ease-in-out;
@@ -71,6 +78,7 @@ h1 {
     bottom: 0;
     left: 0;
     margin: 2vh;
+	margin: calc(var(--vh, 1vh) * 2);
 }
 
 .instagram-comments {
@@ -78,10 +86,12 @@ h1 {
     bottom: 0;
     right: 0;
     margin: 2vh;
+	margin: calc(var(--vh, 1vh) * 2);
 }
 
 .instagram-caption {
 	width: 45vh;
+	width: calc(var(--vh, 1vh) * 45);
     text-align: center;
     position: absolute;
     top: 50%;
@@ -116,6 +126,7 @@ h1 {
 
 .instagram-symbols {
 	height: 2vh;
+	height: calc(var(--vh, 1vh) * 2);
 }
 
 footer {
@@ -127,8 +138,11 @@ footer {
 
 .socials {
 	min-height: 2vh;
+	min-height: calc(var(--vh, 1vh) * 2);
 	max-height: 3.2vh;
+	max-height: calc(var(--vh, 1vh) * 3.2);
 	margin: 3vh;
+	margin: calc(var(--vh, 1vh) * 3);
 }
 
 .socials:hover {
