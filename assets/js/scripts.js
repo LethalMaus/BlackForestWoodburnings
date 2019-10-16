@@ -10,7 +10,7 @@ window.addEventListener('resize', () => {
 	}, 250);
 });
 
-screen.addEventListener("orientationchange", function () {
+window.addEventListener("orientationchange", function () {
 	clearTimeout(resizeTimer);
 	resizeTimer = setTimeout(function() {
 		let vh = window.innerHeight * 0.01;
