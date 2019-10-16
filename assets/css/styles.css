@@ -41,7 +41,7 @@ h1 {
 	margin: 5px auto 5px auto;
 }
 
-.instagram-post {
+.instagram-post, .instagram-post-invisible {
 	position: absolute;
     width: 55vh;
     height: 55vh;
@@ -50,10 +50,17 @@ h1 {
     font-size: 2vh;
 	left: 50%;
     transform: translate(-50%);
-	opacity: 0;
 	transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
     -webkit-transition: opacity 1s ease-in-out;
+}
+
+.instagram-post {
+	opacity: 1;
+}
+
+.instagram-post-invisible {
+	opacity: 0;
 }
 
 .instagram-likes {
@@ -79,15 +86,22 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
-.instagram-image {
+.instagram-image, .instagram-image-invisible {
 	position: absolute;
     width: 100%;
     height: 100%;
 	object-fit: cover;
-	opacity: 0.15;
 	transition: opacity 0.5s ease-in-out;
     -moz-transition: opacity 0.5s ease-in-out;
     -webkit-transition: opacity 0.5s ease-in-out;
+}
+
+.instagram-image {
+	opacity: 1;
+}
+
+.instagram-image-invisible {
+	opacity: 0.15;
 }
 
 .instagram-image:hover {

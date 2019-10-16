@@ -46,14 +46,21 @@ function loadPostAndReplace(postId, currentPostShown) {
 				commentCount = 0;
 			}
 			var comments = "<div class='instagram-comments'><img class='instagram-symbols' src='images/comment.png' alt='Comments'> " + commentCount + "</div>";
-			var caption = "<div class='instagram-caption'>" + response.data.shortcode_media.edge_media_to_caption.edges[0].node.text + "</div>";
-			var image = "<img id='image-" + postId + "' class='instagram-image' src='" + response.data.shortcode_media.display_url + "'>";
-			var instagramPost = "<div id='" + postId + "' class='instagram-post'>" + likes + comments + caption + image + "</div>";
+			var captionText;
+			if (response.data.shortcode_media.edge_media_to_caption && response.data.shortcode_media.edge_media_to_caption.edges[0].node && response.data.shortcode_media.edge_media_to_caption.edges[0].node.text) {
+				captionText = response.data.shortcode_media.edge_media_to_caption.edges[0].node.text;
+			} else {
+				captionText = "";
+				console.log(response);
+			}
+			var caption = "<div class='instagram-caption'>" + captionText + "</div>";
+			var image = "<img id='image-" + postId + "' class='instagram-image-invisible' src='" + response.data.shortcode_media.display_url + "'>";
+			var instagramPost = "<div id='" + postId + "' class='instagram-post-invisible'>" + likes + comments + caption + image + "</div>";
 			document.getElementById("instagram-gallery").innerHTML += instagramPost;
 			
-			document.getElementById(postId).style.opacity = 1;
+			document.getElementById(postId).className = "instagram-post";
 			await timeout(3000);
-			document.getElementById('image-' + postId).style.opacity = 1;
+			document.getElementById('image-' + postId).className = "instagram-image";
 			if (currentPostShown) {
 				document.getElementById(currentPostShown).outerHTML = "";
 			}
