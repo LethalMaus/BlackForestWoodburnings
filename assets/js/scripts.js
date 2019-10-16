@@ -13,21 +13,15 @@ function loadPosts() {
 			var posts = JSON.parse(xhr.responseText);
 			var currentPostShown;
 			for (let i = 0; i < posts.length; i++) {
-				loadPost(posts[i]);
-				document.getElementById(posts[i]).style.opacity = 1;
-				await timeout(3000);
-				document.getElementById('image-' + posts[i]).style.opacity = 1;
-				if (currentPostShown) {
-					document.getElementById(currentPostShown).outerHTML = "";
-				}
+				loadPostAndReplace(posts[i], currentPostShown);
 				currentPostShown = posts[i];
-				await timeout(5000);
+				await timeout(8000);
 			};
 		}
 	}
 }
 
-function loadPost(postId) {
+function loadPostAndReplace(postId, currentPostShown) {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'https://www.instagram.com/graphql/query/?query_hash=865589822932d1b43dfe312121dd353a&variables=%7B%22shortcode%22%3A%22' + postId + '%22%7D');
 	xhr.send();
@@ -56,6 +50,13 @@ function loadPost(postId) {
 			var image = "<img id='image-" + postId + "' class='instagram-image' src='" + response.data.shortcode_media.display_url + "'>";
 			var instagramPost = "<div id='" + postId + "' class='instagram-post'>" + likes + comments + caption + image + "</div>";
 			document.getElementById("instagram-gallery").innerHTML += instagramPost;
+			
+			document.getElementById(postId).style.opacity = 1;
+			await timeout(3000);
+			document.getElementById('image-' + postId).style.opacity = 1;
+			if (currentPostShown) {
+				document.getElementById(currentPostShown).outerHTML = "";
+			}
 		}
 	};
 }
