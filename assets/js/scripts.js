@@ -17,6 +17,7 @@ function loadPosts() {
 				currentPostShown = posts[i];
 				await timeout(8000);
 			};
+			loadPosts();
 		}
 	}
 }
