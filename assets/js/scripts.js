@@ -25,7 +25,7 @@ function loadPostAndReplace(postId, currentPostShown) {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'https://www.instagram.com/graphql/query/?query_hash=865589822932d1b43dfe312121dd353a&variables=%7B%22shortcode%22%3A%22' + postId + '%22%7D');
 	xhr.send();
-	xhr.onload = function() {
+	xhr.onload = async function() {
 		if (xhr.status != 200) { 
 			console.log(`Error ${xhr.status}: ${xhr.statusText}`);
 		} else { 
