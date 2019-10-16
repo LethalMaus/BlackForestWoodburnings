@@ -45,8 +45,7 @@ h1 {
 	position: absolute;
     width: 55vh;
 	max-width: 90vw;
-    height: 55vh;
-	max-height: 65vh;
+    padding-top: 55vh;
     background: red;
     color: white;
     font-size: 2vh;

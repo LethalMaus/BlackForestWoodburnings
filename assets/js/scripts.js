@@ -57,7 +57,6 @@ function loadPostAndReplace(postId, currentPostShown) {
 				captionText = response.data.shortcode_media.edge_media_to_caption.edges[0].node.text;
 			} else {
 				captionText = "";
-				console.log(response);
 			}
 			var caption = "<div class='instagram-caption'>" + captionText + "</div>";
 			var image = "<img id='image-" + postId + "' class='instagram-image-invisible' src='" + response.data.shortcode_media.display_url + "'>";
