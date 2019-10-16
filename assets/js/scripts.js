@@ -4,8 +4,12 @@ function setPlatformIndependentViewHeight() {
 }
 setPlatformIndependentViewHeight();
 
+var resizeTimer;
 window.addEventListener('resize', () => {
-  setPlatformIndependentViewHeight();
+	clearTimeout(resizeTimer);
+	resizeTimer = setTimeout(function() {
+		setPlatformIndependentViewHeight();
+	}, 250);
 });
 
 function timeout(ms) {
