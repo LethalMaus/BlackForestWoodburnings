@@ -24,13 +24,13 @@ function timeout(ms) {
 
 function loadPosts() {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'posts.json');
+	xhr.open('GET', 'posts.txt');
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status != 200) { 
 			console.log(`Error ${xhr.status}: ${xhr.statusText}`);
 		} else { 
-			var posts = JSON.parse(xhr.responseText);
+			var posts = xhr.responseText.split(/\r?\n/);
 			var currentPostShown;
 			for (let i = 0; i < posts.length; i++) {
 				loadPostAndReplace(posts[i], currentPostShown);
