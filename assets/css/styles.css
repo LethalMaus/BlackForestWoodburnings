@@ -69,22 +69,25 @@ footer {
     top: 3%;
     left: 2%;
 }
-.hamburger:hover {
-    opacity: 0.7;
+.hamburger:hover .hamburger-inner,
+.hamburger:hover .hamburger-inner::before,
+.hamburger:hover .hamburger-inner::after,
+.hamburger.is-active:hover .hamburger-inner,
+.hamburger.is-active:hover .hamburger-inner::before,
+.hamburger.is-active:hover .hamburger-inner::after{
+    background-color: #F00;
 }
-.hamburger.is-active:hover {
-    opacity: 0.7; 
-}
+
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
     background-color: #000;
 }
 .hamburger-box {
-  width: 40px;
-  height: 24px;
-  display: inline-block;
-  position: relative;
+    width: calc(var(--vh, 1vh) * 5);
+    height: calc(var(--vh, 1vh) * 3.2);
+    display: inline-block;
+    position: relative;
 }
 .hamburger-inner {
   display: block;
@@ -92,8 +95,8 @@ footer {
   margin-top: -2px;
 }
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-    width: 40px;
-    height: 4px;
+    width: calc(var(--vh, 1vh) * 4);
+    height: calc(var(--vh, 1vh) * 0.4);
     background-color: #000;
     border-radius: 4px;
     position: absolute;
@@ -117,11 +120,11 @@ footer {
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .hamburger--elastic .hamburger-inner::before {
-    top: 10px;
+    top: calc(var(--vh, 1vh) * 1);
     transition: opacity 0.125s 0.275s ease;
 }
 .hamburger--elastic .hamburger-inner::after {
-    top: 20px;
+    top: calc(var(--vh, 1vh) * 2);
     transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .hamburger--elastic.is-active .hamburger-inner {
