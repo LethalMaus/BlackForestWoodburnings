@@ -22,6 +22,11 @@ function timeout(ms) {
 	return new Promise(res => setTimeout(res, ms));
 }
 
+function toggleNavMenu() {
+	document.getElementById("nav-button").classList.toggle("is-active")
+	document.getElementById("nav-menu").classList.toggle("open")
+}
+
 function loadPosts() {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'posts.txt');
