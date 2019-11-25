@@ -29,7 +29,7 @@ function toggleNavMenu() {
 
 function loadPosts() {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'posts.txt');
+	xhr.open('GET', 'INSTAGRAM');
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status != 200) { 
