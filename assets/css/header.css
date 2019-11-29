@@ -1,0 +1,26 @@
+header {
+	text-align: center;
+	margin-bottom: 3vh;
+	margin-bottom: calc(var(--vh, 1vh) * 3);
+}
+
+#logo {
+	width: 12vh;
+	width: calc(var(--vh, 1vh) * 12);
+	margin: 2vh;
+	margin: calc(var(--vh, 1vh) * 2);
+}
+
+h1 {
+	font-size: 4vh;
+	font-size: calc(var(--vh, 1vh) * 4);
+	margin: 0px;
+}
+
+#title-splitter {
+	height: 0.2vh;
+	height: calc(var(--vh, 1vh) * 0.2);
+	width: 5vw;
+	background-color: black;
+	margin: 5px auto 5px auto;
+}

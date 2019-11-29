@@ -1,32 +1,3 @@
-let vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-var resizeTimer;
-window.addEventListener('resize', () => {
-	clearTimeout(resizeTimer);
-	resizeTimer = setTimeout(function() {
-		let vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
-	}, 250);
-});
-
-window.addEventListener("orientationchange", function () {
-	clearTimeout(resizeTimer);
-	resizeTimer = setTimeout(function() {
-		let vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
-	}, 250);
-});
-
-function timeout(ms) {
-	return new Promise(res => setTimeout(res, ms));
-}
-
-function toggleNavMenu() {
-	document.getElementById("nav-button").classList.toggle("is-active")
-	document.getElementById("nav-menu").classList.toggle("open")
-}
-
 function loadPosts() {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'INSTAGRAM');
@@ -46,7 +17,6 @@ function loadPosts() {
 		}
 	}
 }
-
 function loadPostAndReplace(postId, currentPostShown) {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'https://www.instagram.com/graphql/query/?query_hash=865589822932d1b43dfe312121dd353a&variables=%7B%22shortcode%22%3A%22' + postId + '%22%7D');
@@ -85,7 +55,7 @@ function loadPostAndReplace(postId, currentPostShown) {
 		var caption = "<div class='instagram-caption'>" + captionText + "</div>";
 		var image = "<img id='image-" + postId + "' class='instagram-image-invisible' src='" + response.data.shortcode_media.display_url + "'>";
 		var instagramPost = "<div id='" + postId + "' onclick='openPost(this.id)' class='instagram-post-invisible'>" + likes + comments + caption + image + "</div>";
-		document.getElementById("instagram-gallery").innerHTML += instagramPost;
+		document.getElementById("dynamic-content").innerHTML += instagramPost;
 		await timeout(1000);
 		document.getElementById(postId).className = "instagram-post";
 		await timeout(3000);
@@ -93,13 +63,10 @@ function loadPostAndReplace(postId, currentPostShown) {
 		if (currentPostShown) {
 			document.getElementById(currentPostShown).outerHTML = "";
 		}
-		
 	};
 }
-
 function openPost(postId) {
 	var win = window.open('https://www.instagram.com/p/' + postId, '_blank');
 	win.focus();
 }
-
 loadPosts();

@@ -1,61 +1,3 @@
-html {
-	width: 100%;
-	height: 100%;
-}
-
-@font-face {
-  font-family: 'Maiandra GD';
-  src: URL('../fonts/Maiandra GD Regular.ttf') format('truetype');
-}
-
-header {
-	text-align: center;
-	margin-bottom: 3vh;
-	margin-bottom: calc(var(--vh, 1vh) * 3);
-}
-
-#logo {
-	width: 12vh;
-	width: calc(var(--vh, 1vh) * 12);
-	margin: 2vh;
-	margin: calc(var(--vh, 1vh) * 2);
-}
-
-h1 {
-	font-size: 4vh;
-	font-size: calc(var(--vh, 1vh) * 4);
-	margin: 0px;
-}
-
-#title-splitter {
-	height: 0.2vh;
-	height: calc(var(--vh, 1vh) * 0.2);
-	width: 5vw;
-	background-color: black;
-	margin: 5px auto 5px auto;
-}
-
-body {
-	width: 100%;
-	height: 100%;
-	background-image: url(../../images/background.jpg);
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-color: #d2cbd3;
-	margin: 0px;
-	font-family: Maiandra GD;
-}
-
-footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	text-align: center;
-}
-
-/*
- * Hamburger Menu
- */
 .hamburger {
 	height: 5vh;
 	width: 5vh;
@@ -151,9 +93,6 @@ footer {
     transition-delay: 0.075s;
 }
 
-/*
- * Nav Menu
- */
 .nav-menu {
 	background-color: #000;
     width: calc(var(--vh, 1vh) * 25);
@@ -172,9 +111,6 @@ footer {
 	left: 0;
 }
 
-/*
- * Nav Button Main
- */
 #nav-buttons-main {
 	margin-top: 10vh;
 }
@@ -193,102 +129,4 @@ footer {
 }
 .nav-button-main:hover {
 	color: #F00;
-}
-
-/*
- * Instagram Gallery
- */
-.instagram-post, .instagram-post-invisible {
-	position: absolute;
-    width: 55vh;
-	width: calc(var(--vh, 1vh) * 55);
-	max-width: 90vw;
-    height: 55vh;
-	height: calc(var(--vh, 1vh) * 55);
-	max-height: 90vw;
-    background: red;
-    color: white;
-    font-size: 2vh;
-	font-size: calc(var(--vh, 1vh) * 2);
-	left: 50%;
-    transform: translate(-50%);
-	transition: opacity 1s ease-in-out;
-    -moz-transition: opacity 1s ease-in-out;
-    -webkit-transition: opacity 1s ease-in-out;
-}
-.instagram-post {
-	opacity: 1;
-}
-.instagram-post-invisible {
-	opacity: 0;
-}
-.instagram-likes {
-	position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 2vh;
-	margin: calc(var(--vh, 1vh) * 2);
-}
-.instagram-comments {
-	position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 2vh;
-	margin: calc(var(--vh, 1vh) * 2);
-}
-.instagram-caption {
-	width: 45vh;
-	width: calc(var(--vh, 1vh) * 45);
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.instagram-image, .instagram-image-invisible {
-	position: absolute;
-    width: 100%;
-    height: 100%;
-	object-fit: cover;
-	transition: opacity 0.5s ease-in-out;
-    -moz-transition: opacity 0.5s ease-in-out;
-    -webkit-transition: opacity 0.5s ease-in-out;
-}
-.instagram-image {
-	opacity: 1;
-}
-.instagram-image-invisible {
-	opacity: 0.15;
-}
-.instagram-image:hover {
-	opacity: 0.15;
-    transition: opacity 0.5s ease-in-out;
-    -moz-transition: opacity 0.5s ease-in-out;
-    -webkit-transition: opacity 0.5s ease-in-out;
-}
-.instagram-symbols {
-	height: 2vh;
-	height: calc(var(--vh, 1vh) * 2);
-}
-
-/*
- * Socials
- */
-.socials {
-	min-height: 2vh;
-	min-height: calc(var(--vh, 1vh) * 2);
-	max-height: 3.2vh;
-	max-height: calc(var(--vh, 1vh) * 3.2);
-	margin: 3vh;
-	margin: calc(var(--vh, 1vh) * 3);
-}
-
-.socials:hover {
-	filter: gray;
-    -webkit-filter: grayscale(1);
-    -webkit-transform: scale(1.01);
-}
-
-.socials-column {
-	display: inline-block;
 }
