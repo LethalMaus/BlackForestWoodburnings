@@ -15,6 +15,6 @@ function toggleNavMenu() {
 function navigate(path) {
 	document.getElementById("nav-button").classList.toggle("is-active")
 	document.getElementById("nav-menu").classList.toggle("open")
-	await timeout(500);
+	timeout(500);
 	window.locatio.href = path;
 }
