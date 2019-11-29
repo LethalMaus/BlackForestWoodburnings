@@ -1,0 +1,132 @@
+.hamburger {
+	height: 5vh;
+	width: 5vh;
+    cursor: pointer;
+    transition-property: opacity, filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+    position: absolute;
+    top: 2vh;
+    left: 2vh;
+	z-index: 2;
+}
+.hamburger:hover .hamburger-inner,
+.hamburger:hover .hamburger-inner::before,
+.hamburger:hover .hamburger-inner::after,
+.hamburger.is-active:hover .hamburger-inner,
+.hamburger.is-active:hover .hamburger-inner::before,
+.hamburger.is-active:hover .hamburger-inner::after{
+    background-color: #F00;
+}
+
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+    background-color: #000;
+}
+.hamburger-box {
+    width: calc(var(--vh, 1vh) * 5);
+	width: 5vh;
+    height: calc(var(--vh, 1vh) * 3.2);
+	height: 3.2vh
+    display: inline-block;
+    position: relative;
+}
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -0.2vh;
+}
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    width: calc(var(--vh, 1vh) * 4);
+    width: 4vh;
+    height: calc(var(--vh, 1vh) * 0.4);
+    height: 0.4vh;
+    background-color: #000;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+}
+.hamburger-inner::before, .hamburger-inner::after {
+    content: "";
+    display: block;
+}
+.hamburger-inner::before {
+    top: calc(var(--vh, 1vh) * 1);
+    top: 1vh;
+}
+  .hamburger-inner::after {
+    bottom: calc(var(--vh, 1vh) * 1);
+    bottom: 1vh;
+}
+.hamburger--elastic .hamburger-inner {
+    transition-duration: 0.275s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.hamburger--elastic .hamburger-inner::before {
+    top: calc(var(--vh, 1vh) * 1);
+    top: 1vh;
+    transition: opacity 0.125s 0.275s ease;
+}
+.hamburger--elastic .hamburger-inner::after {
+    top: calc(var(--vh, 1vh) * 2);
+	top: 2vh;
+    transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.hamburger--elastic.is-active .hamburger-inner {
+    background-color: #FFF;
+    transform: translate3d(0, 1vh, 0) rotate(135deg);
+    transition-delay: 0.075s;
+}
+.hamburger--elastic.is-active .hamburger-inner::before {
+    transition-delay: 0s;
+    opacity: 0;
+}
+.hamburger--elastic.is-active .hamburger-inner::after {
+    background-color: #FFF;
+    transform: translate3d(0, -2vh, 0) rotate(-270deg);
+    transition-delay: 0.075s;
+}
+
+.nav-menu {
+	background-color: #000;
+    width: calc(var(--vh, 1vh) * 25);
+    width: 25vh;
+	left: calc(var(--vh, 1vh) * -25);
+	left: -25vh;
+    height: 100%;
+    position: fixed;
+    top: 0;
+	transition: left 0.3s ease-in-out;
+    -moz-transition: left 0.3s ease-in-out;
+    -webkit-transition: left 0.3s ease-in-out;
+	z-index: 1;
+}
+.open {
+	left: 0;
+}
+
+#nav-buttons-main {
+	margin-top: 10vh;
+}
+.nav-button-main {
+	font-family: Maiandra GD;
+    background-color: transparent;
+    border: 0;
+    color: #FFF;
+    display: block;
+    font-size: 3vh;
+    width: 100%;
+    text-align: left;
+    padding-left: 3vh;
+	padding-bottom: 2vh;
+	outline: 0;
+}
+.nav-button-main:hover {
+	color: #F00;
+}

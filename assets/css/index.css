@@ -1,0 +1,72 @@
+.instagram-post, .instagram-post-invisible {
+	position: absolute;
+    width: 55vh;
+	width: calc(var(--vh, 1vh) * 55);
+	max-width: 90vw;
+    height: 55vh;
+	height: calc(var(--vh, 1vh) * 55);
+	max-height: 90vw;
+    background: red;
+    color: white;
+    font-size: 2vh;
+	font-size: calc(var(--vh, 1vh) * 2);
+	left: 50%;
+    transform: translate(-50%);
+	transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+}
+.instagram-post {
+	opacity: 1;
+}
+.instagram-post-invisible {
+	opacity: 0;
+}
+.instagram-likes {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 2vh;
+	margin: calc(var(--vh, 1vh) * 2);
+}
+.instagram-comments {
+	position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 2vh;
+	margin: calc(var(--vh, 1vh) * 2);
+}
+.instagram-caption {
+	width: 45vh;
+	width: calc(var(--vh, 1vh) * 45);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.instagram-image, .instagram-image-invisible {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+	object-fit: cover;
+	transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+}
+.instagram-image {
+	opacity: 1;
+}
+.instagram-image-invisible {
+	opacity: 0.15;
+}
+.instagram-image:hover {
+	opacity: 0.15;
+    transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+}
+.instagram-symbols {
+	height: 2vh;
+	height: calc(var(--vh, 1vh) * 2);
+}

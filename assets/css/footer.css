@@ -1,0 +1,25 @@
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.socials {
+	min-height: 2vh;
+	min-height: calc(var(--vh, 1vh) * 2);
+	max-height: 3.2vh;
+	max-height: calc(var(--vh, 1vh) * 3.2);
+	margin: 3vh;
+	margin: calc(var(--vh, 1vh) * 3);
+}
+
+.socials:hover {
+	filter: gray;
+    -webkit-filter: grayscale(1);
+    -webkit-transform: scale(1.01);
+}
+
+.socials-column {
+	display: inline-block;
+}
