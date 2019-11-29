@@ -16,5 +16,5 @@ function navigate(path) {
 	document.getElementById("nav-button").classList.toggle("is-active")
 	document.getElementById("nav-menu").classList.toggle("open")
 	timeout(500);
-	window.locatio.href = path;
+	window.location.href = path;
 }
