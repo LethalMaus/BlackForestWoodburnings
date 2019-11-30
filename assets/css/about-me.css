@@ -1,0 +1,15 @@
+#about-me-image {
+	display: block;
+	height: 50vh;
+	margin: auto;
+}
+
+#about-me-text {
+	text-align: center;
+	font-size: 2vh;
+	width: 80vw;
+	margin: 5vh auto 5vh auto;
+	-webkit-text-fill-color: black;
+	-webkit-text-stroke-color: red;
+	-webkit-text-stroke-width: 0.1px;
+}

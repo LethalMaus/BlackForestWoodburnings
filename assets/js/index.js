@@ -55,7 +55,7 @@ function loadPostAndReplace(postId, currentPostShown) {
 		var caption = "<div class='instagram-caption'>" + captionText + "</div>";
 		var image = "<img id='image-" + postId + "' class='instagram-image-invisible' src='" + response.data.shortcode_media.display_url + "'>";
 		var instagramPost = "<div id='" + postId + "' onclick='openPost(this.id)' class='instagram-post-invisible'>" + likes + comments + caption + image + "</div>";
-		document.getElementById("dynamic-content").innerHTML += instagramPost;
+		document.getElementById("content").innerHTML += instagramPost;
 		await timeout(1000);
 		document.getElementById(postId).className = "instagram-post";
 		await timeout(3000);

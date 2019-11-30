@@ -13,8 +13,9 @@ function toggleNavMenu() {
 }
 
 function navigate(path) {
-	document.getElementById("nav-button").classList.toggle("is-active")
-	document.getElementById("nav-menu").classList.toggle("open")
-	timeout(500);
-	window.location.href = path;
+	document.getElementById("nav-button").classList.toggle("is-active");
+	document.getElementById("nav-menu").classList.toggle("open");
+	window.setTimeout(function() {
+		window.location.href = path;
+	}, 500);
 }

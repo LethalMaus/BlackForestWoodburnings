@@ -13,6 +13,9 @@
     left: 2vh;
 	z-index: 2;
 }
+.is-active {
+	position: fixed;
+}
 .hamburger:hover .hamburger-inner,
 .hamburger:hover .hamburger-inner::before,
 .hamburger:hover .hamburger-inner::after,
@@ -114,19 +117,36 @@
 #nav-buttons-main {
 	margin-top: 10vh;
 }
-.nav-button-main {
+#nav-buttons-secondary {
+	position: absolute;
+	bottom: 0;
+}
+.nav-button {
 	font-family: Maiandra GD;
     background-color: transparent;
     border: 0;
     color: #FFF;
     display: block;
-    font-size: 3vh;
-    width: 100%;
+	width: 100%;
     text-align: left;
     padding-left: 3vh;
 	padding-bottom: 2vh;
 	outline: 0;
 }
-.nav-button-main:hover {
+.nav-button:hover {
 	color: #F00;
+}
+.nav-button-main {
+    font-size: 3vh;
+}
+.nav-button-secondary {
+    font-size: 2vh;
+}
+
+#copyright {
+	color: #FFF;
+	text-align: left;
+    padding-left: 3vh;
+	padding-bottom: 2vh;
+	font-size: 1.4vh;
 }
