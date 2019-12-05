@@ -1,7 +1,6 @@
 #about-me-image {
 	display: block;
 	height: 50vh;
-	width: calc(var(--vh, 1vh) * 50);
 	margin: auto;
 }
 
