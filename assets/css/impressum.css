@@ -1,5 +1,11 @@
 #content {
-    padding: 0vh 3vh 0vh 3vh;
+	width: 40vh;
+	min-height: 51vh;
+	min-height: calc(var(--vh, 1vh) * 51);
+    padding: 3vh;
     margin: auto;
     background-color: rgba(256,256,256,.5);
+	-webkit-text-fill-color: black;
+	-webkit-text-stroke-color: red;
+	-webkit-text-stroke-width: 0.1px;
 }
