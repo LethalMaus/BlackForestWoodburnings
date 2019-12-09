@@ -1,5 +1,5 @@
 #content {
-	width: 40vw;
+	width: 40vh;
 	min-height: 51vh;
 	min-height: calc(var(--vh, 1vh) * 51);
     padding: 3vh;
