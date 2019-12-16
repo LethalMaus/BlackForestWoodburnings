@@ -1,0 +1,54 @@
+#content {
+	width: 80vw;
+	margin: auto;
+}
+
+#contact {
+	margin-bottom: 2vh;
+}
+#contact, #map {
+	display: inline-block;
+	text-align: center;
+	width: 39vw;
+	background-color: rgba(256,256,256,.5);
+}
+#socials {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 39vw;
+	background-color: rgba(256,256,256,.5);
+}
+#socials-wrapper {
+	text-align: center;
+}
+#contact, #socials {
+	float: left;
+	height: 30.5vh;
+	height: calc(var(--vh, 1vh) * 30.5);
+}
+
+#map {
+	float: right;
+	height: 63vh;
+	height: calc(var(--vh, 1vh) * 63);
+}
+#google-map {
+	height: inherit;
+	width: inherit;
+}
+
+.contact-icons, .socials-icons {
+	display: inline-block;
+	width: 6vh;
+	margin: 2vw 2vw;
+}
+
+h3 {
+	font-size: 2vh;
+	padding: 0px 20px;
+}
+
+a {
+	text-decoration: none;
+}

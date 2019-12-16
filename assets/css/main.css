@@ -20,6 +20,6 @@ body {
 }
 
 #content {
-	min-height: 57vh;
-	min-height: calc(var(--vh, 1vh) * 57);
+	min-height: 55vh;
+	min-height: calc(var(--vh, 1vh) * 55);
 }
