@@ -1,0 +1,41 @@
+#content {
+	text-align: center;
+}
+.image-container {
+	margin: 2vw auto;
+}
+.single {
+	width: 90vw;
+}
+.double {
+	width: 40vw;
+}
+
+.image {
+	width: 100%;
+}
+
+.fullscreen {
+	
+}
+
+.image-multi {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 1vw;
+}
+
+.image-arrow {
+	
+}
+.right {
+	transform: rotate(0deg);
+}
+.left {
+	transform: rotate(180deg);
+}
+
+.invisible {
+	display: none;
+}
