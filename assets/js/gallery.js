@@ -87,25 +87,37 @@ function showFullScreenImages(imageElement, postGallery) {
 		if (imageElement.classList.contains("fullscreen")) {
 			var image = imageElement.childNodes[0];
 			leftArrow.onclick = function() {
-				if (imageToShow == postGallery.length-1) {
-					rightArrow.classList.toggle("invisible");
-				}
-				imageToShow--;
-				image.src = postGallery[imageToShow];
-				if (imageToShow == 0) {
-					leftArrow.classList.toggle("invisible");
+				if (imageToShow > 0 && imageToShow <= postGallery.length-1) {
+					if (imageToShow == postGallery.length-1) {
+						rightArrow.classList.toggle("invisible");
+					}
+					imageToShow--;
+					image.src = postGallery[imageToShow];
+					if (imageToShow == 0) {
+						leftArrow.classList.toggle("invisible");
+					}
 				}
 			};
 			rightArrow.onclick = function() {
-				if (imageToShow == 0) {
-					leftArrow.classList.toggle("invisible");
-				}
-				imageToShow++;
-				image.src = postGallery[imageToShow];
-				if (imageToShow == postGallery.length-1) {
-					rightArrow.classList.toggle("invisible");
+				if (imageToShow >= 0 && imageToShow < postGallery.length-1) {
+					if (imageToShow == 0) {
+						leftArrow.classList.toggle("invisible");
+					}
+					imageToShow++;
+					image.src = postGallery[imageToShow];
+					if (imageToShow == postGallery.length-1) {
+						rightArrow.classList.toggle("invisible");
+					}
 				}
 			};
+			document.onkeydown = function(e) {
+				e = e || window.event;
+				if (e.keyCode == '37') {
+					leftArrow.onclick();
+				} else if (e.keyCode == '39') {
+					rightArrow.onclick();
+				}
+			}
 			rightArrow.classList.toggle("invisible");
 		} else {
 			if (!leftArrow.classList.contains("invisible")) {
@@ -114,6 +126,7 @@ function showFullScreenImages(imageElement, postGallery) {
 			if (!rightArrow.classList.contains("invisible")) {
 				rightArrow.classList.toggle("invisible");
 			}
+			document.onkeydown = null;
 		}
 	}
 }
