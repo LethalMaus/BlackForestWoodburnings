@@ -87,6 +87,8 @@ function showFullScreenImages(imageElement, postGallery) {
 		var leftArrow = document.getElementById("arrow-left");
 		var rightArrow = document.getElementById("arrow-right");
 		if (imageElement.classList.contains("fullscreen")) {
+			document.addEventListener('touchstart', handleTouchStart, false);
+			document.addEventListener('touchmove', handleTouchMove, false);
 			leftArrow.onclick = function() {
 				if (imageToShow > 0 && imageToShow <= postGallery.length-1) {
 					if (imageToShow == postGallery.length-1) {
@@ -128,10 +130,31 @@ function showFullScreenImages(imageElement, postGallery) {
 				rightArrow.classList.toggle("invisible");
 			}
 			document.onkeydown = null;
+			document.removeEventListener('touchstart', handleTouchStart, false);
+			document.removeEventListener('touchmove', handleTouchMove, false);
 		}
 	}
 }
 loadPosts();
+
+var xDown = null;
+function handleTouchStart(evt) {
+	xDown = evt.touches[0].clientX;
+};
+
+function handleTouchMove(evt) {
+	if (!xDown) {
+		return;
+	}
+	var xUp = evt.touches[0].clientX;
+	var xDiff = xDown - xUp;
+	if ( xDiff > 0 ) {
+		document.getElementById("arrow-right").onclick()
+	} else {
+		document.getElementById("arrow-left").onclick()
+	}
+	xDown = null;
+};
 
 function changeGalleryColumns() {
 	if (window.innerWidth > window.innerHeight) {
@@ -139,7 +162,6 @@ function changeGalleryColumns() {
 			element.classList.toggle("single");
 			element.classList.toggle("double");
 			imageColumn = "double";
-			
 		})
 	} else {
 		Array.from(document.getElementsByClassName("double")).forEach(function(element) {
