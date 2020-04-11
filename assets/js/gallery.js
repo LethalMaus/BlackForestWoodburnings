@@ -76,6 +76,8 @@ function loadImage(postId) {
 	};
 }
 function showFullScreenImages(imageElement, postGallery) {
+	var image = imageElement.childNodes[0];
+	image.src = postGallery[0];
 	imageElement.classList.toggle("fullscreen");
 	if (imageElement.childNodes[1]) {
 		imageElement.childNodes[1].classList.toggle("invisible");
@@ -85,7 +87,6 @@ function showFullScreenImages(imageElement, postGallery) {
 		var leftArrow = document.getElementById("arrow-left");
 		var rightArrow = document.getElementById("arrow-right");
 		if (imageElement.classList.contains("fullscreen")) {
-			var image = imageElement.childNodes[0];
 			leftArrow.onclick = function() {
 				if (imageToShow > 0 && imageToShow <= postGallery.length-1) {
 					if (imageToShow == postGallery.length-1) {

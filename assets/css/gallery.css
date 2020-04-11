@@ -58,7 +58,7 @@
     position: fixed;
     top: 50%;
     z-index: 4;
-    opacity: 0.5;
+    opacity: 0.8;
 	padding: 2%;
 }
 .right {
