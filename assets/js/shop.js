@@ -1,4 +1,9 @@
 var columns;
+if (window.innerWidth < window.innerHeight) {
+	columns = "double"
+} else {
+	columns = "triple"
+}
 function changeColumns() {
 	if (window.innerWidth < window.innerHeight) {
 		columns = "double"
@@ -110,10 +115,10 @@ function showFullScreenImages(imageElement) {
 	image.classList.toggle(columns);
 	var imageToShow = 0;
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'https://api.github.com/repos/LethalMaus/BlackForestWoodburnings/contents/shop/' + itemName + '/images');
+	xhr.open('GET', 'shop/' + itemName + '/images');
 	xhr.send();
 	xhr.onload = async function() {
-		if (xhr.status == 200) { 
+		if (xhr.status == 200) {
 			var response = JSON.parse(xhr.responseText);
 			if (response.length > 1) {
 			var leftArrow = document.getElementById("arrow-left");
