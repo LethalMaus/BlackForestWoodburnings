@@ -29,7 +29,7 @@ function loadItems() {
 loadItems()
 function loadItemTitle(item) {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'https://api.github.com/repos/LethalMaus/BlackForestWoodburnings/contents/shop/' + item.name + '/TITLE');
+	xhr.open('GET', 'shop/' + item.name + '/TITLE');
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status == 200) {
@@ -45,7 +45,7 @@ function loadItemTitle(item) {
 }
 function loadItemDescription(itemName, itemHTML) {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'https://api.github.com/repos/LethalMaus/BlackForestWoodburnings/contents/shop/' + itemName + '/DESCRIPTION');
+	xhr.open('GET', 'shop/' + itemName + '/DESCRIPTION');
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status == 200) {
@@ -59,7 +59,7 @@ function loadItemDescription(itemName, itemHTML) {
 }
 function loadItemSize(itemName, itemHTML) {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'https://api.github.com/repos/LethalMaus/BlackForestWoodburnings/contents/shop/' + itemName + '/SIZE');
+	xhr.open('GET', 'shop/' + itemName + '/SIZE');
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status == 200) {
@@ -72,7 +72,7 @@ function loadItemSize(itemName, itemHTML) {
 }
 function loadItemPrice(itemName, itemHTML) {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'https://api.github.com/repos/LethalMaus/BlackForestWoodburnings/contents/shop/' + itemName + '/PRICE');
+	xhr.open('GET', 'shop/' + itemName + '/PRICE');
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status == 200) {
@@ -84,7 +84,7 @@ function loadItemPrice(itemName, itemHTML) {
 }
 function loadItemButton(itemName, itemHTML) {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'https://api.github.com/repos/LethalMaus/BlackForestWoodburnings/contents/shop/' + itemName + '/BUTTON');
+	xhr.open('GET', 'shop/' + itemName + '/BUTTON');
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status == 200) {
