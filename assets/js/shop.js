@@ -29,7 +29,7 @@ function loadItems() {
 loadItems()
 function loadItemTitle(itemName) {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'shop/' + item.name + '/TITLE');
+	xhr.open('GET', 'shop/' + itemName + '/TITLE');
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status == 200) {
