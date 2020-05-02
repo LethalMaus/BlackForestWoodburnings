@@ -1,8 +1,6 @@
-var columns;
+var columns = "triple"
 if (window.innerWidth < window.innerHeight) {
 	columns = "double"
-} else {
-	columns = "triple"
 }
 function changeColumns() {
 	if (window.innerWidth < window.innerHeight) {
@@ -39,7 +37,7 @@ function loadItemTitle(itemName) {
 	xhr.onload = async function() {
 		if (xhr.status == 200) {
 			var itemHTML = "<div class='item " + columns + "'>"
-			itemHTML += "<div class='item-image-wrapper' onclick='showFullScreenImages(this)'>"
+			itemHTML += "<div class='item-image-wrapper' onclick='showFullScreenImages(this, " + itemName + ")'>"
 			itemHTML += "<img class='item-image " + columns + "' src='shop/" + itemName + "/images/1.jpg' alt='Woodburning'>"
 			itemHTML += "</div>"
 			itemHTML += "<div class='title-description-wrapper'>"
@@ -106,10 +104,8 @@ function loadItemButton(itemName, itemHTML) {
 	}
 }
 
-function showFullScreenImages(imageElement) {
+function showFullScreenImages(imageElement, itemName) {
 	var image = imageElement.children[0];
-	var itemName = image.src.replace("shop/")
-	itemName = itemName.substring(0, itemName.indexOf("/"))
 	image.src = image.src.substring(0, image.src.lastIndexOf("/")+1) + "1.jpg"
 	imageElement.classList.toggle("fullscreen");
 	image.classList.toggle(columns);
@@ -121,59 +117,58 @@ function showFullScreenImages(imageElement) {
 		if (xhr.status == 200) {
 			var response = JSON.parse(xhr.responseText);
 			if (response.length > 1) {
-			var leftArrow = document.getElementById("arrow-left");
-			var rightArrow = document.getElementById("arrow-right");
-			if (imageElement.classList.contains("fullscreen")) {
-				document.addEventListener('touchstart', handleTouchStart, false);
-				document.addEventListener('touchmove', handleTouchMove, false);
-				leftArrow.onclick = function() {
-					if (imageToShow > 0 && imageToShow <= postGallery.length-1) {
-						if (imageToShow == postGallery.length-1) {
-							rightArrow.classList.toggle("invisible");
+				var leftArrow = document.getElementById("arrow-left");
+				var rightArrow = document.getElementById("arrow-right");
+				if (imageElement.classList.contains("fullscreen")) {
+					document.addEventListener('touchstart', handleTouchStart, false);
+					document.addEventListener('touchmove', handleTouchMove, false);
+					leftArrow.onclick = function() {
+						if (imageToShow > 0 && imageToShow <= postGallery.length-1) {
+							if (imageToShow == postGallery.length-1) {
+								rightArrow.classList.toggle("invisible");
+							}
+							imageToShow--;
+							image.src = image.src.substring(0, image.src.lastIndexOf("/")+1) + (imageToShow+1) + ".jpg"
+							if (imageToShow == 0) {
+								leftArrow.classList.toggle("invisible");
+							}
 						}
-						imageToShow--;
-						image.src = image.src.substring(0, image.src.lastIndexOf("/")+1) + (imageToShow+1) + ".jpg"
-						if (imageToShow == 0) {
-							leftArrow.classList.toggle("invisible");
+					};
+					rightArrow.onclick = function() {
+						if (imageToShow >= 0 && imageToShow < response.length-1) {
+							if (imageToShow == 0) {
+								leftArrow.classList.toggle("invisible");
+							}
+							imageToShow++;
+							image.src = image.src.substring(0, image.src.lastIndexOf("/")+1) + (imageToShow+1) + ".jpg"
+							if (imageToShow == response.length-1) {
+								rightArrow.classList.toggle("invisible");
+							}
+						}
+					};
+					document.onkeydown = function(e) {
+						e = e || window.event;
+						if (e.keyCode == '37') {
+							leftArrow.onclick();
+						} else if (e.keyCode == '39') {
+							rightArrow.onclick();
 						}
 					}
-				};
-				rightArrow.onclick = function() {
-					if (imageToShow >= 0 && imageToShow < response.length-1) {
-						if (imageToShow == 0) {
-							leftArrow.classList.toggle("invisible");
-						}
-						imageToShow++;
-						image.src = image.src.substring(0, image.src.lastIndexOf("/")+1) + (imageToShow+1) + ".jpg"
-						if (imageToShow == response.length-1) {
-							rightArrow.classList.toggle("invisible");
-						}
-					}
-				};
-				document.onkeydown = function(e) {
-					e = e || window.event;
-					if (e.keyCode == '37') {
-						leftArrow.onclick();
-					} else if (e.keyCode == '39') {
-						rightArrow.onclick();
-					}
-				}
-				rightArrow.classList.toggle("invisible");
-			} else {
-				if (!leftArrow.classList.contains("invisible")) {
-					leftArrow.classList.toggle("invisible");
-				}
-				if (!rightArrow.classList.contains("invisible")) {
 					rightArrow.classList.toggle("invisible");
+				} else {
+					if (!leftArrow.classList.contains("invisible")) {
+						leftArrow.classList.toggle("invisible");
+					}
+					if (!rightArrow.classList.contains("invisible")) {
+						rightArrow.classList.toggle("invisible");
+					}
+					document.onkeydown = null;
+					document.removeEventListener('touchstart', handleTouchStart, false);
+					document.removeEventListener('touchmove', handleTouchMove, false);
 				}
-				document.onkeydown = null;
-				document.removeEventListener('touchstart', handleTouchStart, false);
-				document.removeEventListener('touchmove', handleTouchMove, false);
 			}
-	}
 		}
 	}
-	
 }
 
 window.addEventListener('resize', () => {
