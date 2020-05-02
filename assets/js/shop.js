@@ -17,17 +17,17 @@ function changeColumns() {
 
 function loadItems() {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'https://api.github.com/repos/LethalMaus/BlackForestWoodburnings/contents/shop');
+	xhr.open('GET', 'shop/ITEMS');
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status == 200) { 
-			var response = JSON.parse(xhr.responseText);
-			response.forEach(loadItemTitle);
+			items = xhr.responseText.split(/\r?\n/);
+			items.forEach(loadItemTitle);
 		}
 	}
 }
 loadItems()
-function loadItemTitle(item) {
+function loadItemTitle(itemName) {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'shop/' + item.name + '/TITLE');
 	xhr.send();
@@ -35,11 +35,11 @@ function loadItemTitle(item) {
 		if (xhr.status == 200) {
 			var itemHTML = "<div class='item " + columns + "'>"
 			itemHTML += "<div class='item-image-wrapper' onclick='showFullScreenImages(this)'>"
-			itemHTML += "<img class='item-image " + columns + "' src='shop/" + item.name + "/images/1.jpg' alt='Woodburning'>"
+			itemHTML += "<img class='item-image " + columns + "' src='shop/" + itemName + "/images/1.jpg' alt='Woodburning'>"
 			itemHTML += "</div>"
 			itemHTML += "<div class='title-description-wrapper'>"
 			itemHTML += "<div class='item-title " + columns + "'>" + xhr.responseText + "</div>"
-			loadItemDescription(item.name, itemHTML)
+			loadItemDescription(itemName, itemHTML)
 		}
 	}
 }
