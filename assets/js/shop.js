@@ -53,7 +53,7 @@ function loadItemDescription(itemName, itemHTML) {
 			itemHTML += xhr.responseText
 			itemHTML += "</div>"
 			itemHTML += "</div>"
-			loadItemSize(item.name, itemHTML)
+			loadItemSize(itemName, itemHTML)
 		}
 	}
 }
@@ -66,7 +66,7 @@ function loadItemSize(itemName, itemHTML) {
 			itemHTML += "<div class='size-price-button-wrapper " + columns + "'>"
 			itemHTML += "<div class='size-price-wrapper " + columns + "'>"
 			itemHTML += "<div class='item-size " + columns + "'>" + xhr.responseText + "</div>"
-			loadItemPrice(item.name, itemHTML)
+			loadItemPrice(itemName, itemHTML)
 		}
 	}
 }
@@ -78,7 +78,7 @@ function loadItemPrice(itemName, itemHTML) {
 		if (xhr.status == 200) {
 			itemHTML += "<div class='item-price " + columns + "'>" + xhr.responseText + "</div>"
 			itemHTML += "</div>"
-			loadItemButton(item.name, itemHTML)
+			loadItemButton(itemName, itemHTML)
 		}
 	}
 }
