@@ -137,25 +137,6 @@ function showFullScreenImages(imageElement, postGallery) {
 }
 loadPosts();
 
-var xDown = null;
-function handleTouchStart(evt) {
-	xDown = evt.touches[0].clientX;
-};
-
-function handleTouchMove(evt) {
-	if (!xDown) {
-		return;
-	}
-	var xUp = evt.touches[0].clientX;
-	var xDiff = xDown - xUp;
-	if ( xDiff > 0 ) {
-		document.getElementById("arrow-right").onclick()
-	} else {
-		document.getElementById("arrow-left").onclick()
-	}
-	xDown = null;
-};
-
 function changeGalleryColumns() {
 	if (window.innerWidth > window.innerHeight) {
 		Array.from(document.getElementsByClassName("single")).forEach(function(element) {
