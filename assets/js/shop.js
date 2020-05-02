@@ -26,6 +26,7 @@ function loadItems() {
 		}
 	}
 }
+loadItems()
 function loadItemTitle(item) {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'https://api.github.com/repos/LethalMaus/BlackForestWoodburnings/contents/shop/' + item.name + '/TITLE');
@@ -169,12 +170,6 @@ function showFullScreenImages(imageElement) {
 	}
 	
 }
-
-document.addEventListener('readystatechange', event => {
-	if (event.target.readyState === "complete") {
-		changeColumns();
-	}
-});
 
 window.addEventListener('resize', () => {
 	clearTimeout(resizeTimer);
