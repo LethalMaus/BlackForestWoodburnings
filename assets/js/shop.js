@@ -24,7 +24,7 @@ function loadItems() {
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status == 200) { 
-			items = xhr.responseText.split(/\r?\n/);
+			let items = xhr.responseText.split(/\r?\n/);
 			items.forEach(loadItemTitle);
 		}
 	}
@@ -195,19 +195,15 @@ function showFullScreenImages(imageElement, itemName) {
 }
 
 window.addEventListener('resize', () => {
-	if (resizeTimer) {
-		clearTimeout(resizeTimer);
-	}
-	let resizeTimer = setTimeout(function() {
+	clearTimeout(resizeTimer);
+	resizeTimer = setTimeout(function() {
 		document.documentElement.style.setProperty('--vh', `${(window.innerHeight * 0.01)}px`);
 		changeColumns();
 	}, 250);
 });
 window.addEventListener("orientationchange", function () {
-	if (resizeTimer) {
-		clearTimeout(resizeTimer);
-	}
-	let resizeTimer = setTimeout(function() {
+	clearTimeout(resizeTimer);
+	resizeTimer = setTimeout(function() {
 		document.documentElement.style.setProperty('--vh', `${(window.innerHeight * 0.01)}px`);
 		changeColumns();
 	}, 250);

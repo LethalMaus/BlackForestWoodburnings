@@ -153,19 +153,15 @@ function changeGalleryColumns() {
 	}
 }
 window.addEventListener('resize', () => {
-	if (resizeTimer) {
-		clearTimeout(resizeTimer);
-	}
-	let resizeTimer = setTimeout(function() {
+	clearTimeout(resizeTimer);
+	resizeTimer = setTimeout(function() {
 		document.documentElement.style.setProperty('--vh', `${(window.innerHeight * 0.01)}px`);
 		changeGalleryColumns()
 	}, 250);
 });
 window.addEventListener("orientationchange", function () {
-	if (resizeTimer) {
-		clearTimeout(resizeTimer);
-	}
-	let resizeTimer = setTimeout(function() {
+	clearTimeout(resizeTimer);
+	resizeTimer = setTimeout(function() {
 		document.documentElement.style.setProperty('--vh', `${(window.innerHeight * 0.01)}px`);
 		changeGalleryColumns()
 	}, 250);
