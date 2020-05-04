@@ -12,7 +12,7 @@ function loadPosts() {
 				loadPostAndReplace(posts[i], currentPostShown);
 				currentPostShown = posts[i];
 				await timeout(8000);
-			};
+			}
 			loadPosts();
 		}
 	}

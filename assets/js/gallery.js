@@ -57,8 +57,8 @@ function loadImage(postId) {
 			var postGallerySymbols = "";
 			if (response.data.shortcode_media.edge_sidecar_to_children && response.data.shortcode_media.edge_sidecar_to_children.edges) {
 				postGallerySymbols += "<img id='multi' class='image-multi' src='images/multi.png' alt='More'>";
-				for (let i = 0; i < response.data.shortcode_media.edge_sidecar_to_children.edges.length; i++) {
-					postGallery.push(response.data.shortcode_media.edge_sidecar_to_children.edges[i].node.display_url);
+				for (let j = 0; j < response.data.shortcode_media.edge_sidecar_to_children.edges.length; j++) {
+					postGallery.push(response.data.shortcode_media.edge_sidecar_to_children.edges[j].node.display_url);
 				}
 			} else {
 				postGallery.push(response.data.shortcode_media.display_url);
@@ -153,18 +153,20 @@ function changeGalleryColumns() {
 	}
 }
 window.addEventListener('resize', () => {
-	clearTimeout(resizeTimer);
-	resizeTimer = setTimeout(function() {
-		let vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
+	if (resizeTimer) {
+		clearTimeout(resizeTimer);
+	}
+	let resizeTimer = setTimeout(function() {
+		document.documentElement.style.setProperty('--vh', `${(window.innerHeight * 0.01)}px`);
 		changeGalleryColumns()
 	}, 250);
 });
 window.addEventListener("orientationchange", function () {
-	clearTimeout(resizeTimer);
-	resizeTimer = setTimeout(function() {
-		let vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
+	if (resizeTimer) {
+		clearTimeout(resizeTimer);
+	}
+	let resizeTimer = setTimeout(function() {
+		document.documentElement.style.setProperty('--vh', `${(window.innerHeight * 0.01)}px`);
 		changeGalleryColumns()
 	}, 250);
 });

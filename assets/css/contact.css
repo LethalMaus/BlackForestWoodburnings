@@ -37,6 +37,7 @@
 #google-map {
 	height: inherit;
 	width: inherit;
+	border: 0;
 }
 
 .contact-icons, .socials-icons {

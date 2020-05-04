@@ -195,18 +195,20 @@ function showFullScreenImages(imageElement, itemName) {
 }
 
 window.addEventListener('resize', () => {
-	clearTimeout(resizeTimer);
-	resizeTimer = setTimeout(function() {
-		let vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
+	if (resizeTimer) {
+		clearTimeout(resizeTimer);
+	}
+	let resizeTimer = setTimeout(function() {
+		document.documentElement.style.setProperty('--vh', `${(window.innerHeight * 0.01)}px`);
 		changeColumns();
 	}, 250);
 });
 window.addEventListener("orientationchange", function () {
-	clearTimeout(resizeTimer);
-	resizeTimer = setTimeout(function() {
-		let vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
+	if (resizeTimer) {
+		clearTimeout(resizeTimer);
+	}
+	let resizeTimer = setTimeout(function() {
+		document.documentElement.style.setProperty('--vh', `${(window.innerHeight * 0.01)}px`);
 		changeColumns();
 	}, 250);
 });

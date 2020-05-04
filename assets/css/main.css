@@ -4,7 +4,7 @@ html {
 }
 
 @font-face {
-  font-family: 'Maiandra GD';
+  font-family: 'MaiandraGD';
   src: URL('../fonts/Maiandra GD Regular.ttf') format('truetype');
 }
 
@@ -16,7 +16,7 @@ body {
 	background-size: 100% 100%;
 	background-color: #d2cbd3;
 	margin: 0px;
-	font-family: Maiandra GD;
+	font-family: MaiandraGD, sans-serif;
 }
 
 #content {
