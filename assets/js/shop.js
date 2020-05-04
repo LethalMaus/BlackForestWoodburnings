@@ -36,8 +36,8 @@ function loadItemTitle(itemName) {
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status == 200) {
-			var itemHTML = "<div class='item " + columns + "'>"
-			itemHTML += "<div class='item-image-wrapper' onclick='showFullScreenImages(this, " + itemName + ")'>"
+			var itemHTML = "<div id='" + itemName + "'class='item " + columns + "'>"
+			itemHTML += "<div class='item-image-wrapper' onclick='showFullScreenImages(this, \"" + itemName + "\")'>"
 			itemHTML += "<img class='item-image " + columns + "' src='shop/" + itemName + "/images/1.jpg' alt='Woodburning'>"
 			itemHTML += "</div>"
 			itemHTML += "<div class='title-description-wrapper'>"
@@ -100,72 +100,95 @@ function loadItemButton(itemName, itemHTML) {
 			itemHTML += "</div>"
 			itemHTML += "</div>"
 			document.getElementById("content").innerHTML += itemHTML;
+			setTimeout(function() {
+				document.getElementById(itemName).classList.toggle("show")
+			}, 250);
+			
 		}
 	}
 }
 
 function showFullScreenImages(imageElement, itemName) {
 	var image = imageElement.children[0];
-	image.src = image.src.substring(0, image.src.lastIndexOf("/")+1) + "1.jpg"
+	var imageToShow = 1;
+	image.src = image.src.substring(0, image.src.lastIndexOf("/")+1) + imageToShow + ".jpg"
 	imageElement.classList.toggle("fullscreen");
 	image.classList.toggle(columns);
-	var imageToShow = 0;
-	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'shop/' + itemName + '/images');
-	xhr.send();
-	xhr.onload = async function() {
-		if (xhr.status == 200) {
-			var response = JSON.parse(xhr.responseText);
-			if (response.length > 1) {
-				var leftArrow = document.getElementById("arrow-left");
-				var rightArrow = document.getElementById("arrow-right");
-				if (imageElement.classList.contains("fullscreen")) {
-					document.addEventListener('touchstart', handleTouchStart, false);
-					document.addEventListener('touchmove', handleTouchMove, false);
-					leftArrow.onclick = function() {
-						if (imageToShow > 0 && imageToShow <= postGallery.length-1) {
-							if (imageToShow == postGallery.length-1) {
+	var leftArrow = document.getElementById("arrow-left");
+	var rightArrow = document.getElementById("arrow-right");
+	if (!leftArrow.classList.contains("invisible")) {
+		leftArrow.classList.toggle("invisible");
+	}
+	if (!rightArrow.classList.contains("invisible")) {
+		rightArrow.classList.toggle("invisible");
+	}
+	if (imageElement.classList.contains("fullscreen")) {
+		let xhr = new XMLHttpRequest();
+		xhr.open('HEAD', 'shop/' + itemName + '/images/' + (imageToShow + 1) + ".jpg");
+		xhr.send();
+		xhr.onload = async function() {
+			if (xhr.status == 200) {
+				document.addEventListener('touchstart', handleTouchStart, false);
+				document.addEventListener('touchmove', handleTouchMove, false);
+				leftArrow.onclick = function() {
+					if (imageToShow > 1) {
+						imageToShow--
+						image.src = 'shop/' + itemName + '/images/' + imageToShow + ".jpg"
+						if (imageToShow == 1) {
+							leftArrow.classList.toggle("invisible");
+						}
+						if (rightArrow.classList.contains("invisible")) {
+							rightArrow.classList.toggle("invisible");
+						}
+					}
+				}
+				if (rightArrow.classList.contains("invisible")) {
+					rightArrow.classList.toggle("invisible");
+				}
+				rightArrow.onclick = function() {
+					imageToShow++
+					image.src = 'shop/' + itemName + '/images/' + imageToShow + ".jpg"
+					xhr.open('HEAD', 'shop/' + itemName + '/images/' + (imageToShow + 1) + ".jpg");
+					xhr.send();
+					xhr.onload = async function() {
+						if (leftArrow.classList.contains("invisible")) {
+							leftArrow.classList.toggle("invisible");
+						}
+						if (xhr.status == 200) {
+							if (rightArrow.classList.contains("invisible")) {
 								rightArrow.classList.toggle("invisible");
 							}
-							imageToShow--;
-							image.src = image.src.substring(0, image.src.lastIndexOf("/")+1) + (imageToShow+1) + ".jpg"
-							if (imageToShow == 0) {
-								leftArrow.classList.toggle("invisible");
-							}
-						}
-					};
-					rightArrow.onclick = function() {
-						if (imageToShow >= 0 && imageToShow < response.length-1) {
-							if (imageToShow == 0) {
-								leftArrow.classList.toggle("invisible");
-							}
-							imageToShow++;
-							image.src = image.src.substring(0, image.src.lastIndexOf("/")+1) + (imageToShow+1) + ".jpg"
-							if (imageToShow == response.length-1) {
+						} else {
+							if (!rightArrow.classList.contains("invisible")) {
 								rightArrow.classList.toggle("invisible");
 							}
 						}
-					};
-					document.onkeydown = function(e) {
-						e = e || window.event;
-						if (e.keyCode == '37') {
+					}
+				}
+				document.onkeydown = function(e) {
+					e = e || window.event;
+					if (e.keyCode == '37') {
+						if (!leftArrow.classList.contains("invisible")) {
 							leftArrow.onclick();
-						} else if (e.keyCode == '39') {
+						}
+					} else if (e.keyCode == '39') {
+						if (!rightArrow.classList.contains("invisible")) {
 							rightArrow.onclick();
 						}
 					}
-					rightArrow.classList.toggle("invisible");
-				} else {
-					if (!leftArrow.classList.contains("invisible")) {
-						leftArrow.classList.toggle("invisible");
-					}
-					if (!rightArrow.classList.contains("invisible")) {
-						rightArrow.classList.toggle("invisible");
-					}
-					document.onkeydown = null;
-					document.removeEventListener('touchstart', handleTouchStart, false);
-					document.removeEventListener('touchmove', handleTouchMove, false);
 				}
+			} else {
+				leftArrow.onclick = null
+				rightArrow.onclick = null
+				if (!leftArrow.classList.contains("invisible")) {
+					leftArrow.classList.toggle("invisible");
+				}
+				if (!rightArrow.classList.contains("invisible")) {
+					rightArrow.classList.toggle("invisible");
+				}
+				document.onkeydown = null;
+				document.removeEventListener('touchstart', handleTouchStart, false);
+				document.removeEventListener('touchmove', handleTouchMove, false);
 			}
 		}
 	}

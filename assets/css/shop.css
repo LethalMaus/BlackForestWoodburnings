@@ -5,15 +5,19 @@
 .item {
 	position: relative;
     margin: 2%;
+	opacity: 0;
     display: inline-block;
     vertical-align: middle;
+	transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
 }
 .item.double {
 	height: 40vh;
     width: 40vw;
 }
 .item.triple {
-	height: 50vh;
+	height: 55vh;
     width: 25vw;
 }
 
@@ -48,7 +52,7 @@
 	font-size: 1vh;
 }
 .item-description.triple {
-	height: 6vw;
+	height: 7vw;
 	font-size: 1vw;
 }
 
@@ -86,4 +90,8 @@
 }
 .item-button.triple {
 	height: 2.5vw;
+}
+
+.show {
+	opacity: 1;
 }

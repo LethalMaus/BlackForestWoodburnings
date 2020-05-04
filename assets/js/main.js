@@ -34,9 +34,15 @@ function handleTouchMove(evt) {
 	var xUp = evt.touches[0].clientX;
 	var xDiff = xDown - xUp;
 	if ( xDiff > 0 ) {
-		document.getElementById("arrow-right").onclick()
+		var rightArrow = document.getElementById("arrow-right");
+		if (!rightArrow.classList.contains("invisible")) {
+			rightArrow.onclick();
+		}
 	} else {
-		document.getElementById("arrow-left").onclick()
+		var leftArrow = document.getElementById("arrow-left");
+		if (!leftArrow.classList.contains("invisible")) {
+			leftArrow.onclick();
+		}
 	}
 	xDown = null;
 };
