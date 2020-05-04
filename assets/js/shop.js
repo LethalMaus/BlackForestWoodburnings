@@ -193,7 +193,7 @@ function showFullScreenImages(imageElement, itemName) {
 		}
 	}
 }
-
+var resizeTimer;
 window.addEventListener('resize', () => {
 	clearTimeout(resizeTimer);
 	resizeTimer = setTimeout(function() {
