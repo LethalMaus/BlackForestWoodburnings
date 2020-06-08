@@ -23,15 +23,15 @@
 }
 #contact, #socials {
 	float: left;
-	height: 30.5vh;
-	height: calc(var(--vh, 1vh) * 30.5);
+	height: 31.5vh;
+	height: calc(var(--vh, 1vh) * 31.5);
 	margin-bottom: 2vh;
 }
 
 #map {
 	float: right;
-	height: 63vh;
-	height: calc(var(--vh, 1vh) * 63);
+	height: 65vh;
+	height: calc(var(--vh, 1vh) * 65);
 	margin-bottom: 2vh;
 }
 #google-map {
