@@ -7,17 +7,17 @@
     margin: 2%;
 	opacity: 0;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
 	transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
     -webkit-transition: opacity 1s ease-in-out;
 }
 .item.double {
-	height: 40vh;
+	height: fit-content;
     width: 40vw;
 }
 .item.triple {
-	height: 55vh;
+	height: fit-content;
     width: 25vw;
 }
 
@@ -48,11 +48,11 @@
 }
 
 .item-description.double {
-	height: 7vh;
+	height: fit-content;
 	font-size: 1vh;
 }
 .item-description.triple {
-	height: 7vw;
+	height: fit-content;
 	font-size: 1vw;
 }
 
