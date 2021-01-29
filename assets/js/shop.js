@@ -69,23 +69,23 @@ function loadItemSize(itemName, itemHTML) {
 			itemHTML += "<div class='size-price-button-wrapper " + columns + "'>"
 			itemHTML += "<div class='size-price-wrapper " + columns + "'>"
 			itemHTML += "<div class='item-size " + columns + "'>" + xhr.responseText + "</div>"
-			loadItemPrice(itemName, itemHTML)
+			itemHTML += "<div class='item-int-post " + columns + "'>Internationaler Versand nach Absprache</div>"
+			itemHTML += "</div>"
+			loadButtonOptions(itemName, itemHTML)
 		}
 	}
 }
-function loadItemPrice(itemName, itemHTML) {
+function loadButtonOptions(itemName, itemHTML) {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'shop/' + itemName + '/PRICE');
+	xhr.open('GET', 'shop/' + itemName + '/BUTTON_OPTIONS');
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status == 200) {
-			itemHTML += "<div class='item-price " + columns + "'>" + xhr.responseText + "</div>"
-			itemHTML += "</div>"
-			loadItemButton(itemName, itemHTML)
+			loadItemButton(itemName, itemHTML, xhr.responseText)
 		}
 	}
 }
-function loadItemButton(itemName, itemHTML) {
+function loadItemButton(itemName, itemHTML, buttonOptions) {
 	let xhr = new XMLHttpRequest();
 	xhr.open('GET', 'shop/' + itemName + '/BUTTON');
 	xhr.send();
@@ -93,8 +93,12 @@ function loadItemButton(itemName, itemHTML) {
 		if (xhr.status == 200) {
 			itemHTML += "<form action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'>"
 			itemHTML += "<input type='hidden' name='cmd' value='_s-xclick'>"
-			itemHTML += "<input type='hidden' name='hosted_button_id' value=" + xhr.responseText + ">"
-			itemHTML += "<input type='image' class='item-button " + columns + "' src='https://www.paypalobjects.com/de_DE/DE/i/btn/btn_buynowCC_LG.gif' border='0' name='submit' alt='Jetzt einfach, schnell und sicher online bezahlen – mit PayPal.'>"
+			itemHTML += "<input type='hidden' name='hosted_button_id' value='" + xhr.responseText + "'>"
+			itemHTML += "<select class='select " + columns + "' name='os0'>"
+			itemHTML += buttonOptions
+			itemHTML += "</select>"
+			itemHTML += "<input type='hidden' name='currency_code' value='EUR'>"
+			itemHTML += "<input type='image' class='item-button " + columns + "' src='https://www.paypalobjects.com/de_DE/DE/i/btn/btn_buynow_LG.gif' border='0' name='submit' alt='Jetzt einfach, schnell und sicher online bezahlen – mit PayPal.'>"
 			itemHTML += "<img alt='' border='0' src='https://www.paypalobjects.com/de_DE/i/scr/pixel.gif' width='1' height='1'>"
 			itemHTML += "</form>"
 			itemHTML += "</div>"

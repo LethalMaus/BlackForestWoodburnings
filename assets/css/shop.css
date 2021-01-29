@@ -7,17 +7,17 @@
     margin: 2%;
 	opacity: 0;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
 	transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
     -webkit-transition: opacity 1s ease-in-out;
 }
 .item.double {
-	height: 40vh;
+	height: fit-content;
     width: 40vw;
 }
 .item.triple {
-	height: 55vh;
+	height: fit-content;
     width: 25vw;
 }
 
@@ -48,12 +48,14 @@
 }
 
 .item-description.double {
-	height: 7vh;
+	height: fit-content;
 	font-size: 1vh;
+	padding-bottom: 1vw;
 }
 .item-description.triple {
-	height: 7vw;
+	height: fit-content;
 	font-size: 1vw;
+	padding-bottom: 1vh;
 }
 
 .size-price-button-wrapper {
@@ -62,11 +64,11 @@
 }
 .size-price-button-wrapper.double {
 	font-size: 1vh;
-	height: 2.5vh;
+	height: 5vh;
 }
 .size-price-button-wrapper.triple {
 	font-size: 1vw;
-	height: 2.5vw;
+	height: 5vw;
 }
 
 .size-price-wrapper {
@@ -75,9 +77,11 @@
     float: left;
 }
 .size-price-wrapper.double {
+	width: 40vw;
 	height: 2.5vh;
 }
 .size-price-wrapper.triple {
+	width: 25vw;
 	height: 2.5vw;
 }
 
@@ -86,10 +90,24 @@
     float: right;
 }
 .item-button.double {
-	height: 2.5vh;
+	height: 2.0vh;
 }
 .item-button.triple {
-	height: 2.5vw;
+	height: 1.7vw;
+}
+
+.select {
+	font-family: 'MaiandraGD';
+}
+.select.double {
+	width: 20vw;
+	height: 2vh;
+	font-size: 1vh;
+}
+.select.triple {
+	width: 15vw;
+	height: 1.7vw;
+	font-size: 1vw;
 }
 
 .show {
