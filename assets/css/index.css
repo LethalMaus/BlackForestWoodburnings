@@ -1,17 +1,11 @@
 .instagram-post, .instagram-post-invisible {
-	position: absolute;
+	margin: auto;
+	display: block;
     width: 55vh;
 	width: calc(var(--vh, 1vh) * 55);
 	max-width: 90vw;
-    height: 55vh;
-	height: calc(var(--vh, 1vh) * 55);
-	max-height: 90vw;
-    background: red;
-    color: white;
     font-size: 2vh;
 	font-size: calc(var(--vh, 1vh) * 2);
-	left: 50%;
-    transform: translate(-50%);
 	transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
     -webkit-transition: opacity 1s ease-in-out;
