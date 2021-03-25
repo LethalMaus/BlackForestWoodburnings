@@ -10,7 +10,7 @@ const observer = lozad('.lozad', {
 				el.src = el.dataset.src;
 				el.parentElement.classList.toggle("show");
 			if (i < posts.length) {
-				loadImage(posts[i]);
+				loadImages(posts[i]);
 				i++;
 				observer.observe();
 			}
@@ -26,10 +26,10 @@ function loadPosts() {
 			console.log(`Error ${xhr.status}: ${xhr.statusText}`);
 		} else { 
 			posts = xhr.responseText.split(/\r?\n/);
-			loadImage(posts[i]);
+			loadImages(posts[i]);
 			i++;
 			if (window.innerWidth > window.innerHeight) {
-				loadImage(posts[i]);
+				loadImages(posts[i]);
 				i++;
 			}
 		}
@@ -37,35 +37,27 @@ function loadPosts() {
 }
 
 var loadImageRetries = 3;
-function loadImage(postId) {
+function loadImages(postId) {
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', 'https://www.instagram.com/graphql/query/?query_hash=865589822932d1b43dfe312121dd353a&variables=%7B%22shortcode%22%3A%22' + postId + '%22%7D');
+	xhr.open('GET', 'gallery/' + postId);
 	xhr.send();
 	xhr.onload = async function() {
 		if (xhr.status != 200) { 
 			console.log(`Error ${xhr.status} ${xhr.statusText}: ${xhr.response}`);
 			if (loadImageRetries > 0) {
 				await timeout(10000);
-				loadImage(postId);
+				loadImages(postId);
 				loadImageRetries--;
 			} else {
 				loadImageRetries = 3;
 			}
 		} else {
-			var response = JSON.parse(xhr.responseText);
-			var postGallery = [];
-			var postGallerySymbols = "";
-			if (response.data.shortcode_media.edge_sidecar_to_children && response.data.shortcode_media.edge_sidecar_to_children.edges) {
-				postGallerySymbols += "<img id='multi' class='image-multi' src='images/multi.png' alt='More'>";
-				for (let j = 0; j < response.data.shortcode_media.edge_sidecar_to_children.edges.length; j++) {
-					postGallery.push(response.data.shortcode_media.edge_sidecar_to_children.edges[j].node.display_url);
-				}
-			} else {
-				postGallery.push(response.data.shortcode_media.display_url);
-			}
+			var postGallery = xhr.responseText.split(/\r?\n/);
 			var image = "<div class='image-container " + imageColumn + "'>";
-			image += "<img id='image' class='lozad image' data-src='" + response.data.shortcode_media.display_url + "'>";
-			image += postGallerySymbols;
+			image += "<img id='image' class='lozad image' data-src='" + postGallery[0] + "'>";
+			if (postGallery.length > 2) {
+				image += "<img id='multi' class='image-multi' src='images/multi.png' alt='More'>";
+			}
 			image += "</div>"
 			var parser = new DOMParser();
 			var imageElement = parser.parseFromString(image, 'text/html').body.childNodes[0];
