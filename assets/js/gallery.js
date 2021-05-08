@@ -54,8 +54,8 @@ function loadImages(postId) {
 		} else {
 			var postGallery = xhr.responseText.split(/\r?\n/);
 			var image = "<div class='image-container " + imageColumn + "'>";
-			image += "<img id='image' class='lozad image' data-src='" + postGallery[0] + "'>";
-			if (postGallery.length > 2) {
+			image += "<img id='image' class='lozad image' data-src='images/gallery/" + postGallery[0] + "'>";
+			if (postGallery.length > 1) {
 				image += "<img id='multi' class='image-multi' src='images/multi.png' alt='More'>";
 			}
 			image += "</div>"
@@ -69,7 +69,7 @@ function loadImages(postId) {
 }
 function showFullScreenImages(imageElement, postGallery) {
 	var image = imageElement.childNodes[0];
-	image.src = postGallery[0];
+	image.src = "images/gallery/" + postGallery[0];
 	imageElement.classList.toggle("fullscreen");
 	if (imageElement.childNodes[1]) {
 		imageElement.childNodes[1].classList.toggle("invisible");
@@ -87,7 +87,7 @@ function showFullScreenImages(imageElement, postGallery) {
 						rightArrow.classList.toggle("invisible");
 					}
 					imageToShow--;
-					image.src = postGallery[imageToShow];
+					image.src = "images/gallery/" + postGallery[imageToShow];
 					if (imageToShow == 0) {
 						leftArrow.classList.toggle("invisible");
 					}
@@ -99,7 +99,7 @@ function showFullScreenImages(imageElement, postGallery) {
 						leftArrow.classList.toggle("invisible");
 					}
 					imageToShow++;
-					image.src = postGallery[imageToShow];
+					image.src = "images/gallery/" + postGallery[imageToShow];
 					if (imageToShow == postGallery.length-1) {
 						rightArrow.classList.toggle("invisible");
 					}
